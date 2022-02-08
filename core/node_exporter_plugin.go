@@ -1,4 +1,4 @@
-package main
+package core
 
 import (
 	"github.com/ducesoft/node_exporter/collector"
@@ -50,13 +50,13 @@ func StartNodeExporter(conf *NodeExporterConfig) {
 	if conf.DisableDefaultCollectors {
 		collector.DisableDefaultCollectors()
 	}
-	level.Info(logger).Log("msg", "Starting node_exporter", "version", "1.3.1")
+	level.Info(logger).Log("msg", "Starting node_exporter", "version", "1.3.2")
 	level.Info(logger).Log("msg", "Build context", "build_context", version.BuildContext())
 	if curUser, err := user.Current(); err == nil && curUser.Uid == "0" {
 		level.Warn(logger).Log("msg", "Node Exporter is running as root user. This exporter is designed to run as unpriviledged user, root is not required.")
 	}
 
-	http.Handle(conf.MetricsPath, newHandler(true, conf.MaxRequests, logger))
+	http.Handle(conf.MetricsPath, NewHandler(true, conf.MaxRequests, logger))
 	http.HandleFunc(conf.ExporterPath, func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`<html>
 			<head><title>Node Exporter</title></head>

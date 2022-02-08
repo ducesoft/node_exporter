@@ -1,6 +1,8 @@
-package main
+package core
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestStartNodeExporter(t *testing.T) {
 	conf := &NodeExporterConfig{}
