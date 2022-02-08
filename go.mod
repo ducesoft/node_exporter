@@ -1,4 +1,4 @@
-module github.com/prometheus/node_exporter
+module github.com/ducesoft/node_exporter
 
 require (
 	github.com/beevik/ntp v0.3.0

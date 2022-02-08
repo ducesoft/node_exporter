@@ -1,11 +1,11 @@
 package main
 
 import (
+	"github.com/ducesoft/node_exporter/collector"
 	"github.com/go-kit/log/level"
 	"github.com/prometheus/common/promlog"
 	"github.com/prometheus/common/version"
 	"github.com/prometheus/exporter-toolkit/web"
-	"github.com/prometheus/node_exporter/collector"
 	"net/http"
 	"os"
 	"strconv"
