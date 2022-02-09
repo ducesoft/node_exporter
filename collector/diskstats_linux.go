@@ -66,7 +66,7 @@ func NewDiskstatsCollector(logger log.Logger) (Collector, error) {
 	}
 
 	return &diskstatsCollector{
-		ignoredDevicesPattern: regexp.MustCompile(*ignoredDevices),
+		ignoredDevicesPattern: regexp.MustCompile(ignoredDevices),
 		fs:                    fs,
 		infoDesc: typedFactorDesc{
 			desc: prometheus.NewDesc(prometheus.BuildFQName(namespace, diskSubsystem, "info"),
