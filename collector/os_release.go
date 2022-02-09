@@ -153,7 +153,7 @@ func (c *osReleaseCollector) UpdateStruct(path string) error {
 
 func (c *osReleaseCollector) Update(ch chan<- prometheus.Metric) error {
 	for i, path := range c.osReleaseFilenames {
-		err := c.UpdateStruct(*rootfsPath + path)
+		err := c.UpdateStruct(rootfsPath + path)
 		if err == nil {
 			break
 		}

@@ -84,7 +84,7 @@ type ethtoolCollector struct {
 // This allows NewEthtoolTestCollector to override its .ethtool interface
 // for testing.
 func makeEthtoolCollector(logger log.Logger) (*ethtoolCollector, error) {
-	fs, err := sysfs.NewFS(*sysPath)
+	fs, err := sysfs.NewFS(sysPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open sysfs: %w", err)
 	}

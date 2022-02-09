@@ -44,7 +44,7 @@ func NewFibreChannelCollector(logger log.Logger) (Collector, error) {
 	var i fibrechannelCollector
 	var err error
 
-	i.fs, err = sysfs.NewFS(*sysPath)
+	i.fs, err = sysfs.NewFS(sysPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open sysfs: %w", err)
 	}

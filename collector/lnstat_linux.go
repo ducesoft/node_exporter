@@ -42,7 +42,7 @@ func (c *lnstatCollector) Update(ch chan<- prometheus.Metric) error {
 		subsystem = "lnstat"
 	)
 
-	fs, err := procfs.NewFS(*procPath)
+	fs, err := procfs.NewFS(procPath)
 	if err != nil {
 		return fmt.Errorf("failed to open procfs: %w", err)
 	}

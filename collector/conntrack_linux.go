@@ -163,7 +163,7 @@ func (c *conntrackCollector) handleErr(err error) error {
 func getConntrackStatistics() (*conntrackStatistics, error) {
 	c := conntrackStatistics{}
 
-	fs, err := procfs.NewFS(*procPath)
+	fs, err := procfs.NewFS(procPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open procfs: %w", err)
 	}

@@ -18,33 +18,35 @@ import (
 	"strings"
 
 	"github.com/prometheus/procfs"
-	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
 	// The path of the proc filesystem.
-	procPath   = kingpin.Flag("path.procfs", "procfs mountpoint.").Default(procfs.DefaultMountPoint).String()
-	sysPath    = kingpin.Flag("path.sysfs", "sysfs mountpoint.").Default("/sys").String()
-	rootfsPath = kingpin.Flag("path.rootfs", "rootfs mountpoint.").Default("/").String()
+	//procPath   = kingpin.Flag("path.procfs", "procfs mountpoint.").Default(procfs.DefaultMountPoint).String()
+	procPath = procfs.DefaultMountPoint
+	//sysPath    = kingpin.Flag("path.sysfs", "sysfs mountpoint.").Default("/sys").String()
+	sysPath = "/sys"
+	//rootfsPath = kingpin.Flag("path.rootfs", "rootfs mountpoint.").Default("/").String()
+	rootfsPath = "/"
 )
 
 func procFilePath(name string) string {
-	return filepath.Join(*procPath, name)
+	return filepath.Join(procPath, name)
 }
 
 func sysFilePath(name string) string {
-	return filepath.Join(*sysPath, name)
+	return filepath.Join(sysPath, name)
 }
 
 func rootfsFilePath(name string) string {
-	return filepath.Join(*rootfsPath, name)
+	return filepath.Join(rootfsPath, name)
 }
 
 func rootfsStripPrefix(path string) string {
-	if *rootfsPath == "/" {
+	if rootfsPath == "/" {
 		return path
 	}
-	stripped := strings.TrimPrefix(path, *rootfsPath)
+	stripped := strings.TrimPrefix(path, rootfsPath)
 	if stripped == "" {
 		return "/"
 	}

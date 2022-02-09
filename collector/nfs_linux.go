@@ -49,7 +49,7 @@ func init() {
 
 // NewNfsCollector returns a new Collector exposing NFS statistics.
 func NewNfsCollector(logger log.Logger) (Collector, error) {
-	fs, err := nfs.NewFS(*procPath)
+	fs, err := nfs.NewFS(procPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open procfs: %w", err)
 	}

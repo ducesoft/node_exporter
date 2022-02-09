@@ -156,7 +156,7 @@ func pushPowerSupplyMetric(ch chan<- prometheus.Metric, subsystem string, name s
 }
 
 func getPowerSupplyClassInfo(ignore *regexp.Regexp) (sysfs.PowerSupplyClass, error) {
-	fs, err := sysfs.NewFS(*sysPath)
+	fs, err := sysfs.NewFS(sysPath)
 	if err != nil {
 		return nil, err
 	}

@@ -36,7 +36,7 @@ func init() {
 
 // NewBtrfsCollector returns a new Collector exposing Btrfs statistics.
 func NewBtrfsCollector(logger log.Logger) (Collector, error) {
-	fs, err := btrfs.NewFS(*sysPath)
+	fs, err := btrfs.NewFS(sysPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open sysfs: %w", err)
 	}

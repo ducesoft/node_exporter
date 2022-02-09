@@ -29,7 +29,7 @@ func TestReadProcessStatus(t *testing.T) {
 		t.Fatal(err)
 	}
 	want := 1
-	fs, err := procfs.NewFS(*procPath)
+	fs, err := procfs.NewFS(procPath)
 	if err != nil {
 		t.Errorf("failed to open procfs: %v", err)
 	}
